@@ -78,21 +78,13 @@ function commit(
       sharedUpdater(store, user, newEdge);
     },
     optimisticUpdater: (store: RecordSourceSelectorProxy) => {
-      const id = 'client:newTodo:' + tempID++;
-      const node = store.create(id, 'Todo');
-      node.setValue(text, 'text');
-      node.setValue(id, 'id');
-
-      const newEdge = store.create('client:newEdge:' + tempID++, 'TodoEdge');
-      newEdge.setLinkedRecord(node, 'node');
-      sharedUpdater(store, user, newEdge);
-
       // Get the UserProxy, and update the totalCount
       const userProxy = store.get(user.id);
 
       if (!userProxy) {
         throw new Error('Failed to retrieve userProxy from store');
       }
+
 
       const totalCount = userProxy.getValue('totalCount');
 
@@ -101,6 +93,15 @@ function commit(
           `Expected userProxy.totalCount to be number, but got: ${typeof totalCount}`,
         );
       }
+      const id = Buffer.from('Todo:' + totalCount, 'utf8').toString('base64');
+      console.log(id);
+      const node = store.create(id, 'Todo');
+      node.setValue(text, 'text');
+      node.setValue(id, 'id');
+
+      const newEdge = store.create('client:newEdge:' + tempID++, 'TodoEdge');
+      newEdge.setLinkedRecord(node, 'node');
+      sharedUpdater(store, user, newEdge);
 
       userProxy.setValue(totalCount + 1, 'totalCount');
     },

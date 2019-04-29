@@ -16,15 +16,14 @@ import 'todomvc-common';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 
-import {QueryRenderer, graphql} from 'react-relay';
+import {graphql} from 'react-relay';
+import {QueryRenderer} from 'react-relay-offline';
 import {
-  Environment,
   Network,
-  RecordSource,
-  Store,
   type RequestNode,
   type Variables,
 } from 'relay-runtime';
+import {OfflineStore, Store, Environment, RecordSource} from 'react-relay-offline';
 
 import TodoApp from './components/TodoApp';
 import type {appQueryResponse} from 'relay/appQuery.graphql';
@@ -47,10 +46,11 @@ async function fetchQuery(
   return response.json();
 }
 
-const modernEnvironment: Environment = new Environment({
-  network: Network.create(fetchQuery),
-  store: new Store(new RecordSource()),
-});
+const network = Network.create(fetchQuery);
+const storeOffline = OfflineStore(network);
+const source = new RecordSource(storeOffline);
+const store = new Store(storeOffline, source);
+const modernEnvironment = new Environment({ network, store, dataFrom: "CACHE_FIRST" }, storeOffline);
 
 const rootElement = document.getElementById('root');
 
