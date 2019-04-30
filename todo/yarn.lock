@@ -5067,23 +5067,21 @@ react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
   integrity sha512-PVadd+WaUDOAciICm/J1waJaSvgq+4rHE/K70j0PFqKhkTBsPv/82UGQJNXAngz1fOQLLxI6z1sEDmJDQhCTAA==
 
-react-relay-offline@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/react-relay-offline/-/react-relay-offline-0.0.1.tgz#edaf0c3036c66b420871e2d087a92c05fd3ce47d"
-  integrity sha512-F+OmJSjtK19HO/JzzoA8KvXgJUV+KHkCvaLV8M6HUmXNjzVX4b4vqetY3GaOzEmhXy74mhDzLExIu87bQxsDgg==
+react-relay-offline@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-relay-offline/-/react-relay-offline-0.0.2.tgz#2387b6af0a7dd71b2b5f86fd4cee8297b3317086"
+  integrity sha512-OcU3ametTYtufoEWF6Ju/ksPTpOurSIgnkUrUZfq+l4gLrEVdr6PTVxzZrrEf/O7BexdVyOoPWXRIdIEY4V3Zw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@redux-offline/redux-offline" "2.5.1"
     fbjs "^1.0.0"
     idb "^4.0.0"
     nullthrows "^1.1.0"
-    react-relay "3.0.0"
     redux "^3.7.2"
     redux-thunk "^2.3.0"
-    relay-runtime "3.0.0"
     uuid "3.3.2"
 
-react-relay@3.0.0, react-relay@^3.0.0:
+react-relay@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-3.0.0.tgz#b3fe7931f812a6700e2420a853adb74156e162b9"
   integrity sha512-HZQ1CXhF2EBt6f5XG2nWoT5FZIn9zdoHeo8+u5rqQ3fCRBr4qmvLihfehWlCcYCcx57pnAiqsjUdJmwxGUmbsg==
